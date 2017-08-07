@@ -1,0 +1,56 @@
+body {
+    background-color: #2B313c;
+    margin: 0 0;
+    padding: 0 0;
+    overflow: hidden; 
+}
+
+.device-list {
+    height: 25vh;
+    width: 100%;
+    border-bottom: 1px solid #898989;
+    overflow-x:scroll;
+}
+
+.device-list li {
+    float: left;
+}
+
+#phone-screen {
+     width: 100%;
+     height: calc(100% - 42px);
+     -webkit-app-region: no-drag; 
+}
+
+.footer {
+    background-color: #673ab8;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    min-height: 0px;
+    height: 42px;
+    -webkit-app-region: no-drag; 
+}
+
+.menu-button {
+    height: 42px;
+    cursor: pointer;
+    transition: all 250ms linear;
+}
+
+.menu-button:hover {
+    background: rgba(0,0,0,.1);
+}
+
+.menu-button span {
+    color: white;
+    line-height: 42px;
+    font-size: 1.7em;
+}
+
+.modal-dialog {  
+    margin: 15vh auto;  
+}  
+
+
+

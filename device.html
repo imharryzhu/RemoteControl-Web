@@ -1,89 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Device</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/device.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="screen-container text-center">
-                <canvas id="phone-screen">
-                </canvas>
-                <ul class="menu">
-                    <!--清晰度设置-->
-                    <li>
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownScale" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                清晰度设置
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownScale">
-                                <li>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="sizing-addon1">@</span>
-                                        <input type="text" id="minicapScaleText" class="form-control" size="1" placeholder="0.3">
-                                        <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" onclick="onMinicapScaleChange()">提交</button>
-                                </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownRotate" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                旋转角度设置
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownRotate">
-                                <li>
-                                    <div class="btn-group" data-toggle="buttons">
-                                        <label class="btn btn-default" onclick="onMinicapRotateChange(0)" >
-                                            <input type="radio" name="options" id="option1"autocomplete="off">0
-                                        </label>
-                                        <label class="btn btn-default" onclick="onMinicapRotateChange(90)">
-                                            <input type="radio" name="options" id="option2" autocomplete="off">90
-                                        </label>
-                                        <label class="btn btn-default" onclick="onMinicapRotateChange(180)">
-                                            <input type="radio" name="options" id="option3" autocomplete="off">180
-                                        </label>
-                                        <label class="btn btn-default" onclick="onMinicapRotateChange(270)">
-                                            <input type="radio" name="options" id="option4" autocomplete="off">270
-                                        </label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>键盘输入映射</li>
-                    <li>文字输入<input type="text" id="text-input">
-                        <button onclick="textInput()">输入</button>
-                    </li>
-                    <li>
-                        <input type="file" id="fileToUpload"/>
-                        <input id="devicepath" type="text" placeholder="/storage/emulated/0"/><button id="uploadtofile">上传到手机</button>
-                    </li>
-                </ul>
+    <link rel="stylesheet" href="static/lib/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/lib/jquery-ui-1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="static/css/device.css">
+  </head>
+  <body>
+      <div class="content" id="content">
+            <nav class="navbar">
+                <p id="title" class="text-center">{{title}}</p>  
+            </nav>
+            <div><canvas id="phone-screen"></canvas></div>
+            
+            <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                <!-- <div class="col-xs-3  text-center menu-button" id="btn-scale"><span class="fa "></div> -->
+                    <!-- <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button> -->
+                <div class="col-xs-3 text-center menu-button" id="btn-back"><span class="fa fa-chevron-left"></span></div>
+                <div class="col-xs-3 text-center menu-button" id="btn-home"><span class="fa fa-circle-o"></span></div>
+                <div class="col-xs-3 text-center menu-button" id="btn-menu"><span class="fa fa-align-justify"></span></div>
+                <div class="col-xs-3 text-center menu-button" id="btn-more" data-toggle="modal" data-target="#myModal"><span class="fa fa-wheelchair"></span></div>
+                <!-- Button trigger modal -->
+                </div>
             </div>
-        </div>
+            </footer>
+      </div>
+    <!-- Modal -->
+    <!-- 设置  -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <!-- <div class="modal-content"> -->
+          <ul class="list-group">
+            <li class="list-group-item">
+              <p>窗口大小设置</p>
+              <div id="display-scale-slider"></div>
+            </li>
+            <li class="list-group-item">
+              <p>输出清晰度</p>
+              <div id="scale-slider"></div>
+            </li>
+            <li class="list-group-item text-center">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="rotateCheckBox"> 屏幕旋转
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="keyEventCheckBox"> 键盘映射
+                </label>
+                <p class="help-block">将你键盘按下的键位信息发送到手机</p>
+              </div>
+            </li>
+          </ul>
+        <!-- </div> -->
+      </div>
     </div>
-
-
-
-    <!-- jQuery -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.jsonp.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap-notify.min.js"></script>
-    <script src="js/keyeventConvert.js"></script>
-    <script src="js/encoding-indexes.js"></script>
-    <script src="js/encoding.js"></script>
-    <script src="js/server.js"></script>
-    <script src="js/device.js"></script>
-</body>
+    <!-- 重置scale  -->
+    <div class="modal" id="resetScaleModal" tabindex="-1" role="dialog" data-backdrop="static">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div>请等待CapService重启</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="static/lib/jquery-3.2.1.min.js"></script>
+  <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+  <script src="static/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="static/lib/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+  <script src="static/lib/vue.js"></script>
+  <script src="static/js/keyeventConvert.js"></script>
+  <script src="static/js/device.js"></script>
 </html>

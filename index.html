@@ -1,56 +1,77 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap 101 Template</title>
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/index.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row">
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>RemoteControl-Desktop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="static/lib/bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+  </head>
+  <body class="noselect">
+    <nav class="navbar">
+      <h1 class="text-center">么么么么么哒</h1>
+    </nav>
+    <div class="content">
+      <ul class="phone-list" id="phone-list">
+          <li v-for="p in devices.slice(0, 4)">
+            <div class="phone">
+              <div class="phone-header phone-info">
+                <p>{{p.sn}}@{{p.server.ip}}:{{p.server.port}}</p>
+              </div>
+              <div class="phone-body">
+                <img v-bind:onclick="'phoneClick(\'' + p.sn + '\')'" style="max-width: 100%;" class="phone-shot" v-bind:src="'http://127.0.0.1:6655/shot/' + p.sn" /> 
+              </div>
+              <div class="phone-footer phone-info">
+                <div>{{p.sn}}<a style="float: right; margin-right:8px;">🖕</a></div>
+              </div>
             </div>
-        </div>
-        <div class="setting">
-            <button type="button" class="btn" data-toggle="modal" data-target="#settingModal">设置</button>
-        </div>
-
-
-        <div class="modal fade" id="settingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">设置</h4>
-                    </div>
-                    <div class="modal-body">
-                        <label for="server-ip">AndroidControl服务器IP</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="server-ip-label">ip</span>
-                            <input type="text" class="form-control" id="server-ip" aria-describedby="basic-addon3">
-                        </div>
-                        <label for="server-port-label">AndroidControl服务器端口号</label>
-                        <div class="input-group">
-                            <span class="input-group-addon" id="server-port-label">port</span>
-                            <input type="text" class="form-control" id="server-port" aria-describedby="basic-addon3">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="onServerConfig()">Save changes</button>
-                    </div>
+          </li>
+        <!-- 群控机  -->
+        <!-- <li>
+          <div class="phone">
+            <div class="phone-header phone-info">
+              <p>群控机@1920x1080</p>
+            </div>
+            <div class="phone-body" id="control-all-phone">
+              <div v-for="p in devices" class="small-phone">
+                <img style="max-width: 100%;" class="phone-shot" v-bind:src="'http://127.0.0.1:6655/shot/' + p.sn">
+              </div>
+            </div>
+            <div class="phone-footer phone-info">
+              <div>别问那么多了，点开试试</div>
+            </div>
+          </div>
+        </li> -->
+        <!-- 群控机 end  -->
+      </ul>
+      <div class="bottom text-center"><span>Copyright © Harry 2017</span></div>
+    </div>
+    <!-- modal  -->
+    <div class="modal fade" id="serverModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="panel panel-default">
+              <div class="panel-heading">添加服务器</div>
+              <div class="panel-body">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon3">服务器地址</span>
+                  <input type="text" class="form-control" id="server-input" placeholder="localhost:6655">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" id="btn-addserver">添加</button>
+                  </span>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-
-        <!-- jQuery -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery.jsonp.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/server.js"></script>
-        <script src="js/index.js"></script>
-    </body>
+      </div>
+    </div>
+  </body>
+  <script src="static/lib/jquery-3.2.1.min.js"></script>
+  <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script>
+  <script src="static/lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+  <script src="static/lib/vue.js"></script>
+  <script src="static/js/index.js"></script>
 </html>
