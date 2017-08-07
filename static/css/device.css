@@ -1,12 +1,20 @@
 body {
     background-color: #2B313c;
     margin: 0 0;
-    padding: 0 0;
-    overflow: hidden; 
+    padding: 0 0; 
+}
+
+#main {
+    text-align: center;
 }
 
 #content {
+    display: inline-block;
     text-align: center;
+}
+
+#phone-screen {
+    display: block;
 }
 
 .navbar {
@@ -46,6 +54,4 @@ body {
 .modal-dialog {  
     margin: 15vh auto;  
 }  
-
-
 

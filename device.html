@@ -8,26 +8,27 @@
     <link rel="stylesheet" href="static/css/device.css">
   </head>
   <body>
+    <div id="main">
       <div class="content" id="content">
-            <nav class="navbar">
-                <p id="title" class="text-center">{{title}}</p>  
-            </nav>
-            <div><canvas id="phone-screen"></canvas></div>
-            
-            <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                <!-- <div class="col-xs-3  text-center menu-button" id="btn-scale"><span class="fa "></div> -->
-                    <!-- <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button> -->
-                <div class="col-xs-3 text-center menu-button" id="btn-back"><span class="fa fa-chevron-left"></span></div>
-                <div class="col-xs-3 text-center menu-button" id="btn-home"><span class="fa fa-circle-o"></span></div>
-                <div class="col-xs-3 text-center menu-button" id="btn-menu"><span class="fa fa-align-justify"></span></div>
-                <div class="col-xs-3 text-center menu-button" id="btn-more" data-toggle="modal" data-target="#myModal"><span class="fa fa-wheelchair"></span></div>
-                <!-- Button trigger modal -->
-                </div>
-            </div>
-            </footer>
+        <nav class="navbar">
+            <p id="title" class="text-center">{{title}}</p>  
+        </nav>
+        <canvas id="phone-screen"></canvas>
+        <footer class="footer">
+          <div class="container-fluid">
+              <div class="row">
+              <!-- <div class="col-xs-3  text-center menu-button" id="btn-scale"><span class="fa "></div> -->
+                  <!-- <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button> -->
+              <div class="col-xs-3 text-center menu-button" id="btn-back"><span class="fa fa-chevron-left"></span></div>
+              <div class="col-xs-3 text-center menu-button" id="btn-home"><span class="fa fa-circle-o"></span></div>
+              <div class="col-xs-3 text-center menu-button" id="btn-menu"><span class="fa fa-align-justify"></span></div>
+              <div class="col-xs-3 text-center menu-button" id="btn-more" data-toggle="modal" data-target="#myModal"><span class="fa fa-wheelchair"></span></div>
+              <!-- Button trigger modal -->
+              </div>
+          </div>
+        </footer>
       </div>
+    </div>
     <!-- Modal -->
     <!-- 设置  -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
